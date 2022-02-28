@@ -26,7 +26,7 @@ export const GeniusProvider = ({children}) => {
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "genius.p.rapidapi.com",
-          "x-rapidapi-key": "2a8eaafc76msh7aeff424c8265e1p143d0bjsne3ac375a4739"
+          "x-rapidapi-key": `${process.env_REACT_APP_GENIUS_LYRICS_API_KEY}`
         }
       })
 

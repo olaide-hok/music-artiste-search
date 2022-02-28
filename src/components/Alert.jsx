@@ -10,7 +10,7 @@ function Alert() {
         <p className='d-flex text-start mb-4'>
             {alert.type === 'error' && (
                 <svg
-                    className='d-flex mt-1'
+                    className='d-flex'
                     style={{width: "24px"}}
                     fill='none'
                     viewBox='0 0 24 24'
@@ -23,9 +23,9 @@ function Alert() {
                     ></path>
                 </svg>
             )}
-            <p className="flex-1 text-base font-bold leading-7 text-black">
+            <span className="d-flex flex-fill fs-2 fw-bold lh-base text-black">
                 <strong>{alert.msg}</strong>
-            </p>
+            </span>
         </p>
     )
   )
