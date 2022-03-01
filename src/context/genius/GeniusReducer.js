@@ -3,7 +3,8 @@ const geniusReducer = (state, action) => {
         case 'GET_ARTISTE_SONGS':
             return {
                 ...state,
-                artisteSongs: action.payload
+                artisteSongs: action.payload,
+                loading: false
             }
         case 'SET_LOADING':
             return {

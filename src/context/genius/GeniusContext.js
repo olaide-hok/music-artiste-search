@@ -6,16 +6,15 @@ const GeniusContext = createContext()
 export const GeniusProvider = ({children}) => {
     const initialState = {
         artisteSongs: [],
-        loading: false
+        loading: true
     }
 
     const [state, dispatch] = useReducer(geniusReducer, initialState)
 
-
     const searchArtisteSongs = async (name) => {
         setLoading()
 
-       // converting first letter to uppercase
+       // convert first letter to uppercase
         const artisteName = name.charAt(0).toUpperCase() + name.slice(1);
 
         const params = new URLSearchParams({
@@ -26,7 +25,7 @@ export const GeniusProvider = ({children}) => {
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "genius.p.rapidapi.com",
-          "x-rapidapi-key": `${process.env_REACT_APP_GENIUS_LYRICS_API_KEY}`
+          "x-rapidapi-key": `${process.env.REACT_APP_GENIUS_LYRICS_API_KEY}`
         }
       })
 

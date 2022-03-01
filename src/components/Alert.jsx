@@ -7,7 +7,7 @@ function Alert() {
 
   return (
     alert !== null && (
-        <p className='d-flex text-start mb-4'>
+        <p className='d-flex text-start ms-4'>
             {alert.type === 'error' && (
                 <svg
                     className='d-flex'
@@ -23,7 +23,7 @@ function Alert() {
                     ></path>
                 </svg>
             )}
-            <span className="d-flex flex-fill fs-2 fw-bold lh-base text-black">
+            <span className="d-flex flex-fill ms-1 fw-bold lh-base text-black">
                 <strong>{alert.msg}</strong>
             </span>
         </p>

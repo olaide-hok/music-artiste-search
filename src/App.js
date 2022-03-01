@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 
 import Navbar from "./components/Navbar";
 import { AlertProvider } from "./context/alert/AlertContext";
-import { GeniusProvider } from "./context/GeniusContext";
+import { GeniusProvider } from "./context/genius/GeniusContext";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";

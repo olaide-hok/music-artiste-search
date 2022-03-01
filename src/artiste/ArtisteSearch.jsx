@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import AlertContext from '../context/alert/AlertContext'
-import GeniusContext from '../context/GeniusContext'
+import GeniusContext from '../context/genius/GeniusContext'
 
 function ArtisteSearch() {
     const [artisteName, setArtisteName] = useState('')
@@ -16,21 +16,18 @@ function ArtisteSearch() {
         e.preventDefault()        
 
         if(artisteName === '') {
-            // alert("Enter Artiste's name")
-            setAlert('Please enter valid Artiste name', 'error')
+            setAlert("Please enter valid Artiste's name", 'error')
         } else {
             searchArtisteSongs(artisteName)
             setArtisteName('')
         }
     }
 
-
   return (
-      <div className="">
           <div className="">        
             <div className='d-grid col-6 col-xl-10 col-lg-8 
-            col-md-6 mb-5 g-2' >
-                <div className='px-4 my-5'>
+                col-md-6 mb-5 g-2' >
+                <div className='px-4'>
                     <form onSubmit={handleSubmit}>
                         <div className="input-group">
                             <input 
@@ -45,8 +42,7 @@ function ArtisteSearch() {
                             <button 
                                 type='submit' 
                                 className="btn btn-dark btn-lg"
-                                id="button-addon2"
-                                
+                                id="button-addon2"                                
                                 >
                                 Search
                             </button>
@@ -54,14 +50,14 @@ function ArtisteSearch() {
                     </form>
 
                 </div>
-                    {artisteSongs.length > 0 && (<div>
+                    {artisteSongs.length > 0 && (<div className='m-4'>
                     <button 
                         onClick={clearArtisteSongs}
                         className="btn btn-dark btn-lg">Clear
                     </button>
                 </div>)}
             </div>
-        </div>
+        
       </div>
   )
 }
