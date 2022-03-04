@@ -32,7 +32,7 @@ function ArtisteResults() {
          <ArtisteSongs songs={songs} key={songs.result.id}/>
       ))}
       </div>
-      <Pagination 
+      <Pagination
         postsPerPage={postsPerPage} 
         totalPosts={artisteSongs.length} 
         paginate={paginate}

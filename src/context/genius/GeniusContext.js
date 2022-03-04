@@ -31,12 +31,20 @@ export const GeniusProvider = ({children}) => {
 
       const data  = await response.json()
       const { hits } = data.response
+      console.log(hits);
 
       dispatch({
           type: 'GET_ARTISTE_SONGS',
           payload: hits
       })
 
+      const pageViews = hits.map((hit) => {
+        return hit.result.stats.pageviews
+
+      })
+      // console.log(pageViews);
+      // const sortedPageViews = pageViews.sort(function(a, b){return b-a})
+      
     }
 
     // Clear Artiste Songs from State
