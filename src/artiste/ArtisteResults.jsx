@@ -20,7 +20,8 @@ function ArtisteResults() {
   if(!loading) { 
     return (
       <>
-      <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+      {currentSongs.length > 0 && <p className='mb-4 fs-4 lh-base'>Top songs according to page views.</p>}
+      <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3">
         {currentSongs.map(songs => (
          <ArtisteSongs songs={songs} key={songs.result.id}/>
       ))}
