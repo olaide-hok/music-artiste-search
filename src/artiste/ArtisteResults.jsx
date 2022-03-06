@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import Spinner from '../components/Spinner';
 import GeniusContext from '../context/genius/GeniusContext'
 import Pagination from '../layout/Pagination';
@@ -8,39 +8,32 @@ function ArtisteResults() {
 
   const { artisteSongs, loading } = useContext(GeniusContext)
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(5)
-  
+  const [songsPerPage] = useState(5)  
 
-  // get current posts
-  const indexOfLastPost = currentPage * postsPerPage
-  const indexofFirstPost = indexOfLastPost - postsPerPage
-  const currentPosts = artisteSongs.slice(indexofFirstPost, indexOfLastPost)
-  console.log(currentPosts);
+  // get current songs
+  const indexOfLastSong = currentPage * songsPerPage
+  const indexOfFirstSong = indexOfLastSong - songsPerPage
+  const currentSongs = artisteSongs.slice(indexOfFirstSong, indexOfLastSong)
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   if(!loading) { 
     return (
-      // <div>
-      //   {artisteSongs.slice(0, 5).map(songs => (
-      //    <ArtisteSongs songs={songs} key={songs.result.id}/>
-      // ))}
-      // </div>
       <>
       <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
-        {currentPosts.map(songs => (
+        {currentSongs.map(songs => (
          <ArtisteSongs songs={songs} key={songs.result.id}/>
       ))}
       </div>
       <Pagination
-        postsPerPage={postsPerPage} 
-        totalPosts={artisteSongs.length} 
+        songsPerPage={songsPerPage} 
+        totalSongs={artisteSongs.length} 
         paginate={paginate}
       />
       </>
     ) 
   } else {
-    return null   
+    return <Spinner />   
   }
 }
 

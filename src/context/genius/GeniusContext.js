@@ -6,7 +6,7 @@ const GeniusContext = createContext()
 export const GeniusProvider = ({children}) => {
     const initialState = {
         artisteSongs: [],
-        loading: true
+        loading: false
     }
 
     const [state, dispatch] = useReducer(geniusReducer, initialState)
@@ -17,6 +17,7 @@ export const GeniusProvider = ({children}) => {
        // convert first letter to uppercase
         const artisteName = name.charAt(0).toUpperCase() + name.slice(1);
 
+      // set artiste's name as query parameter
         const params = new URLSearchParams({
           q: artisteName
       })
@@ -31,20 +32,11 @@ export const GeniusProvider = ({children}) => {
 
       const data  = await response.json()
       const { hits } = data.response
-      console.log(hits);
 
       dispatch({
           type: 'GET_ARTISTE_SONGS',
           payload: hits
       })
-
-      const pageViews = hits.map((hit) => {
-        return hit.result.stats.pageviews
-
-      })
-      // console.log(pageViews);
-      // const sortedPageViews = pageViews.sort(function(a, b){return b-a})
-      
     }
 
     // Clear Artiste Songs from State
@@ -55,14 +47,11 @@ export const GeniusProvider = ({children}) => {
        return dispatch({type: 'SET_LOADING'})
     }
 
-
     return <GeniusContext.Provider value={{
         artisteSongs: state.artisteSongs,
         loading: state.loading,
         searchArtisteSongs,
-        clearArtisteSongs,
-        
-
+        clearArtisteSongs
     }}
     >
         {children}

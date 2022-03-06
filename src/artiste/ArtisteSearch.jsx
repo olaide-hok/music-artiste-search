@@ -5,19 +5,21 @@ import GeniusContext from '../context/genius/GeniusContext'
 function ArtisteSearch() {
     const [artisteName, setArtisteName] = useState('')
     
-    const {searchArtisteSongs, clearArtisteSongs, artisteSongs} = useContext(GeniusContext)
+    const {searchArtisteSongs, clearArtisteSongs, artisteSongs } = useContext(GeniusContext)
     const {setAlert} = useContext(AlertContext)   
 
+    // Input Change handler
     const handleChange = (e) => {
         setArtisteName(e.target.value)
     }
 
+    // Form Submit Handler
     const handleSubmit = async (e) => {
         e.preventDefault()        
 
         if(artisteName === '') {
             setAlert("Please enter valid Artiste's name", 'error')
-        } else {
+        } else {                   
             searchArtisteSongs(artisteName)
             setArtisteName('')
         }
